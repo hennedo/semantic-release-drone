@@ -12,8 +12,6 @@ export GL_TOKEN=$PLUGIN_GITLAB_TOKEN
 export BB_TOKEN=$PLUGIN_BITBUCKET_TOKEN
 export GIT_CREDENTIALS=$(node /semantic-release/create-credentials.js)
 
-cp /semantic-release/.releaserc.json .releaserc
-
 if [ "$MODE" = "predict" ]; then
   echo 'Running semantic release in dry mode...'
 
@@ -21,8 +19,6 @@ if [ "$MODE" = "predict" ]; then
 else
   semantic-release  || exit 1
 fi
-
-rm .releaserc
 
 FILE=.release-version
 
